@@ -6,7 +6,11 @@
 
 <script>
   export default {
-    name: 'city-header'
+    name: 'city-header',
+    props: {
+      list: Object,
+      hotcity: Array
+    }
   }
 </script>
 
