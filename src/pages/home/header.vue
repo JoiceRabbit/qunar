@@ -7,13 +7,19 @@
         请输入城市/景点/游玩主题
       </div>
     </div>
-    <div class="city">北京</div>
+    <router-link to="/city">
+      <div class="city">{{city}}</div>
+    </router-link>
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   export default {
-    name: 'index-header'
+    name: 'index-header',
+    computed: {
+      ...mapState(['city'])
+    }
   }
 </script>
 

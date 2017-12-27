@@ -1,23 +1,41 @@
 <template>
-  <swiper class="banner">
-    <swiper-slide>I'm Slide 1</swiper-slide>
-    <swiper-slide>I'm Slide 2</swiper-slide>
+  <swiper class="banner index-banner" :options="swiperOption">
+    <swiper-slide v-for="item of sliders" :key="item.id">
+      <img :src="item.imgUrl" class="banner-img">
+    </swiper-slide>
     <div class="swiper-pagination"  slot="pagination"></div>
-    <div>1312414</div>
   </swiper>
 </template>
 
 <script>
   export default {
-    name: 'index-slider'
+    name: 'index-slider',
+
+    props: {
+      sliders: Array
+    },
+
+    data () {
+      return {
+        swiperOption: {
+          pagination: '.swiper-pagination',
+          loop: true,
+          speed: 3000
+        }
+      }
+    }
   }
 </script>
 
 <style scoped lang="stylus">
   @import '../../assets/styles/common/varibles.styl'
+  .banner >>> .swiper-pagination-bullet
+    background: #fff
   .banner
     overflow: hidden
+    width: 100%
     height: 0
     padding-bottom: 31.25%
-    background: red
+    .banner-img
+      width: 100%
 </style>
