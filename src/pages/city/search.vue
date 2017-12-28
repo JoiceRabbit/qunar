@@ -57,7 +57,7 @@
           })
         } else {
           this.showList = false
-        }     
+        }
       }
     },
     mounted () {
@@ -84,7 +84,7 @@
   .search-list
     z-index: 1
     overflow: hidden
-    position: fixed
+    position: absolute
     top: 1.62rem
     right: 0
     bottom: 0

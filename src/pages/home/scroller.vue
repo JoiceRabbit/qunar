@@ -30,6 +30,7 @@
       return {
         moreSights: [],
         isLoading: false,
+        isFetching: false,
         pageNum: 1
       }
     },
@@ -71,9 +72,12 @@
         this.isLoading = false
       },
       getListInfo () {
-        axios.get('./api/sightlist.json?city=' + this.city + '&page=' + this.pageNum)
+        if (!this.isFetching) {
+          this.isFetching = true
+          axios.get('./api/sightlist.json?city=' + this.city + '&page=' + this.pageNum)
               .then(this.handleGetListSucc.bind(this))
               .catch(this.handleGetListErr.bind(this))
+        }
       },
       handleGetListSucc (res) {
         res && (res = res.data)
@@ -82,11 +86,13 @@
             this.moreSights = this.moreSights.concat(res.data.list)
             this.pageNum += 1
           }
+          this.isFetching = false
         } else {
           this.handleGetListErr()
         }
       },
       handleGetListErr () {
+        this.isFetching = false
         console.log('请求失败')
       }
     },
