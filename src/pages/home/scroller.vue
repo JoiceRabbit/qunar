@@ -53,7 +53,8 @@
       createScroller () {
         this.scroller = new BScroll(this.$refs.scroller, {
           observer: false,
-          probeType: 3
+          probeType: 3,
+          click: true
         })
       },
       bindEvents () {
@@ -92,6 +93,9 @@
     mounted () {
       this.createScroller()
       this.bindEvents()
+    },
+    activated () {
+      this.scroller && this.scroller.refresh()
     }
   }
 </script>

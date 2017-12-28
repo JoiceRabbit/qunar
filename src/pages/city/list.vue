@@ -53,13 +53,6 @@
         }
       })
     },
-    watch: {
-      list () {
-        this.$nextTick(() => {
-          this.scroll.refresh()
-        })
-      }
-    },
     methods: {
       handleCityClick (city) {
         this.changeCity(city)
@@ -69,6 +62,9 @@
     },
     mounted () {
       this.scroll = new BScroll(this.$refs.scroller)
+    },
+    activated () {
+      this.scroll && this.scroll.refresh()
     }
   }
 </script>

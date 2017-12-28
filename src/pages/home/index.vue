@@ -32,6 +32,11 @@
     computed: {
       ...mapState(['city'])
     },
+    watch: {
+      city () {
+        this.getIndexData()
+      }
+    },
     methods: {
       ...mapMutations(['changeCity']),
       getIndexData () {
